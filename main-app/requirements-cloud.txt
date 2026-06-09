@@ -1,18 +1,19 @@
-# Cloud-compatible requirements for Streamlit Cloud
-# Removed heavy ML packages that aren't available in cloud
-
 streamlit
+# Utilities 
 numpy
 pandas
+
+# FACE RECOGNITION
 scikit-learn
+dlib-bin
+git+https://github.com/ageitgey/face_recognition_models
 setuptools<70.0.0
+
 supabase
 bcrypt
+
 segno
 pillow
 
-# Optional - commented out packages not available in cloud:
-# dlib-bin - Not available in cloud
-# face_recognition_models - Not available in cloud
-# librosa - Optional, may not be available
-# resemblyzer - Requires heavy dependencies
+librosa
+resemblyzer
