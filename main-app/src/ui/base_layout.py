@@ -54,7 +54,9 @@ def style_base_layout():
             }
                 
             .block-container {
-                padding-top:1.5rem !important;    
+                padding-top:1.5rem !important;
+                transform: scale(0.8) !important;
+                transform-origin: top center !important;
             }
 
             h1 {
