@@ -26,7 +26,7 @@ def auto_enroll_dialog(subject_code):
             st.query_params.clear()
             st.rerun()
         return
-    st.markdown(f'Would you like to enroll in **{subject['name']}**?')
+    st.markdown(f"Would you like to enroll in **{subject.get('name', 'this course')}**?")
 
     col1, col2 = st.columns(2)
 
@@ -36,7 +36,8 @@ def auto_enroll_dialog(subject_code):
             st.rerun()
     with col2:
         if st.button('Yes enroll now!', type='primary', width='stretch'):
-            enroll_student_to_subject(student_id, subject['subject_id'])
+            subject_id = subject['subject_id']
+            enroll_student_to_subject(student_id, subject_id)
             st.success('Joined succesfully!')
             st.query_params.clear()
             time.sleep(2)

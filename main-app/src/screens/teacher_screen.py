@@ -348,9 +348,16 @@ def register_teacher(teacher_username, teacher_name, teacher_pass, teacher_pass_
     
     try:
         create_teacher(teacher_username, teacher_pass, teacher_name)
-        return True, "Sucessfully Created! Login Now"
+        return True, "Successfully Created! Login Now"
     except Exception as e:
-        return False, "Unexpected Error!"
+        error_msg = str(e)
+        # Check for RLS policy errors
+        if "new row violates row-level security policy" in error_msg.lower():
+            return False, "Database access denied. Contact admin or check RLS policies."
+        elif "permission denied" in error_msg.lower():
+            return False, "Permission denied. Please check database settings."
+        else:
+            return False, f"Error: {error_msg[:100]}"
     
 
 def teacher_screen_register():
